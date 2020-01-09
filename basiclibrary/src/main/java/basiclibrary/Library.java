@@ -15,7 +15,6 @@ public class Library {
         for (int i = 0 ; i < n ; i++) {
             results[i] = (int) (Math.random() * 6) + 1;
         }
-        System.out.println(results);
         return results;
     }
 
