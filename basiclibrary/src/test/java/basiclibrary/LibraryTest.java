@@ -15,6 +15,7 @@ public class LibraryTest {
     public void testRoll() {
         int numberOfRolls = 2;
         assertEquals("Roll method should return array of length 2",2, Library.roll(2).length);
+        System.out.println("numberOfRolls = " + numberOfRolls);
     }
 
     @Test
@@ -23,6 +24,7 @@ public class LibraryTest {
         int[] arrayWithNoDupes = {1, 2, 3, 4, 5};
         assertTrue("containsDuplicates method should return 'true'", Library.containsDuplicates(arrayWithDupes));
         assertFalse("containsDuplicates should return 'true'", Library.containsDuplicates(arrayWithNoDupes));
+        System.out.println("arrayWithNoDupes = " + arrayWithNoDupes);
     }
 
 
@@ -30,6 +32,7 @@ public class LibraryTest {
     public void testCalculateAverage() {
         int[] arrayOfIntegers = {1, 2, 3, 4, 5};
         assertEquals("Calculate average should return 3.0",3.0, Library.calculateAverage(arrayOfIntegers), 0.001);
+        System.out.println("arrayOfIntegers = " + arrayOfIntegers);
     }
 
     @Test
@@ -41,6 +44,8 @@ public class LibraryTest {
                 {55, 54, 60, 53, 59, 57, 61},
                 {65, 56, 55, 52, 55, 62, 57}
         };
+        System.out.println("weeklyMonthTemperatures = " + weeklyMonthTemperatures);
         assertArrayEquals("findSmallestAverage should return {22, 25, 0, 15, 26, 22, 20}", weeklyMonthTemperatures [1], Library.findSmallestAverage(weeklyMonthTemperatures ));
     }
+
 }
