@@ -15,6 +15,9 @@ inheritance
                          ├── addReview(Review review);
 
                          ├── newRestaurantRating();
+                    └── Shop.java
+                        
+                    └── Theater.java
 
                     └── Review.java
 
