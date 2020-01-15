@@ -1,49 +1,40 @@
 package inheritance;
 
-
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
-
 public class RestaurantTest {
-    Restaurant testRestaurant;
-    @Before
-    public void setUp(){
-        testRestaurant = new Restaurant("Texas de Brazil", 4, 2);
+    @Test
+    public void testNewRestaurant() {
+        Restaurant newRestaurant = new Restaurant("Texas de Brazil", "$$");
+        String[] outputValues = {"Texas de Brazil", "$$"};
+        assertArrayEquals(outputValues, new String[] {newRestaurant.getName(), newRestaurant.getPrice()});
     }
 
     @Test
-    public void testStringMethod() {
-
-        assertEquals("No Dice, Try again", "Restaurant: Texas de Brazil\n" +
-                " 4.0 stars.\n" +
-                " $$ price category", testRestaurant.toString());
+    public void testToString() {
+        Restaurant newRestaurant = new Restaurant("Texas de Brazil", "$$");
+        String expectedOutput = "Restaurant Name: Texas de Brazil\nPrice: $$ \nNumber of Stars: No Stars";
+        assertEquals(expectedOutput, newRestaurant.toString());
     }
 
     @Test
-    public void testAddReviewAndResult() {
-        Review newTestReviewOne = new Review("Best Steak ever", "Evelyn", 4);
-        Review newTestReviewTwo = new Review("SO MUCH FOOD", "Shainah", 5);
-        testRestaurant.addReview(newTestReviewOne);
-        testRestaurant.addReview(newTestReviewTwo);
-        assertEquals("Failed to add", "[Review: Best Steak ever\n" +
-                " by Evelyn.\n" +
-                " 4 star rating., Review: SO MUCH FOOD\n" +
-                " by Shainah.\n" +
-                " 5 star rating.]", testRestaurant.allReviews.toString());
+    public void testAddReview() {
+        Restaurant newRestaurant = new Restaurant("Texas de Brazil", "$$");
+        Review restaurantReview = new Review("This is a good review", 5, "Me");
+        newRestaurant.addReview(restaurantReview);
+        assertTrue("Contains Review", newRestaurant.containsReview(restaurantReview));
     }
 
     @Test
-    public void testAverageOfReviews() {
-        Review newTestReviewOne = new Review("Best Steak ever", "Evelyn", 4);
-        Review newTestReviewTwo = new Review("SO MUCH FOOD", "Shainah", 5);
-        testRestaurant.addReview(newTestReviewOne);
-        testRestaurant.addReview(newTestReviewTwo);
-        double expectedRating = 4.5;
-        assertTrue("Failed to get Average",  testRestaurant.newRestaurantRating() == expectedRating);
-        assertEquals("Failed to Update", expectedRating, testRestaurant.rating, .01);
+    public void testUpdateRestaurantStars() {
+        Restaurant newRestaurant = new Restaurant("Texas de Brazil", "$$");
+        Review restaurantReview = new Review("This is a good review", 5, "Me");
+        newRestaurant.addReview(restaurantReview);
 
+        Review restaurantReview2 = new Review("This is an ok review", 3, "Me");
+        newRestaurant.addReview(restaurantReview2);
+
+        assertEquals("Contains Review", 4, newRestaurant.getNumStars());
     }
 }
